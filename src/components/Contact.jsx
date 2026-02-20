@@ -104,7 +104,7 @@ const Contact = ({ theme }) => {
                         };
                         const CardTag = href ? 'a' : 'div';
                         const cardProps = href
-                            ? { href, target: href.startsWith('http') ? '_blank' : undefined, rel: 'noreferrer' }
+                            ? { href, target: href.startsWith('http') ? '_blank' : undefined, rel: 'noopener noreferrer' }
                             : {};
 
                         return (

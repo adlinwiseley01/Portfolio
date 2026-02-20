@@ -251,7 +251,7 @@ const HeaderAbout = ({ theme, toggleTheme }) => {
                 {SOCIAL_LINKS.map(({ Icon, href, label }) => (
                   <a key={label} href={href} title={label}
                     target={href.startsWith('http') ? '_blank' : undefined}
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     style={{
                       width: '38px', height: '38px', borderRadius: '10px',
                       background: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,123,255,0.06)',
