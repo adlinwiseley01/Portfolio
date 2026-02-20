@@ -1,0 +1,138 @@
+/* Mobile Navigation and General Responsiveness */
+@media (max-width: 768px) {
+
+    /* Global Container Padding */
+    section {
+        padding: 4rem 1.5rem !important;
+    }
+
+    /* Navigation */
+    nav {
+        padding: 1rem 1.5rem !important;
+        background: rgba(12, 12, 12, 0.95) !important;
+        backdrop-filter: blur(20px);
+    }
+
+    /* Hamburger Menu Button */
+    .menu-toggle {
+        display: flex !important;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 30px;
+        height: 25px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        z-index: 1001;
+        padding: 0;
+    }
+
+    .menu-toggle span {
+        width: 100%;
+        height: 3px;
+        background: #007bff;
+        border-radius: 10px;
+        transition: all 0.3s linear;
+        position: relative;
+        transform-origin: 1px;
+    }
+
+    /* Hamburger Animation */
+    .menu-toggle.open span:first-child {
+        transform: rotate(45deg);
+    }
+
+    .menu-toggle.open span:nth-child(2) {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    .menu-toggle.open span:nth-child(3) {
+        transform: rotate(-45deg);
+    }
+
+    /* Theme Toggle Button Position */
+    .theme-toggle-btn {
+        margin-right: 10px;
+    }
+
+    /* Navigation Links - Mobile View */
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: #0c0c0c;
+        height: 100vh;
+        text-align: center;
+        padding: 2rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        transition: transform 0.3s ease-in-out;
+        transform: translateX(100%);
+        z-index: 999;
+    }
+
+    .nav-links.open {
+        transform: translateX(0);
+    }
+
+    .nav-links li {
+        margin: 1.5rem 0;
+    }
+
+    .nav-links a {
+        font-size: 1.5rem !important;
+    }
+
+    /* Hero Section */
+    .hero-container {
+        grid-template-columns: 1fr !important;
+        text-align: center;
+        padding-top: 6rem !important;
+        gap: 3rem !important;
+    }
+
+    .hero-content {
+        order: 2;
+    }
+
+    .hero-image {
+        order: 1;
+        margin-bottom: 1rem;
+    }
+
+    .hero-title {
+        font-size: 2.5rem !important;
+    }
+
+    .hero-stats {
+        justify-content: center;
+        gap: 1.5rem !important;
+    }
+
+    /* Education Grid */
+    .education-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Projects Grid */
+    .projects-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .project-features-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)) !important;
+    }
+}
+
+/* Desktop default for menu toggle */
+.menu-toggle {
+    display: none;
+}

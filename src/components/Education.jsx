@@ -72,7 +72,7 @@ const Education = ({ theme }) => {
                     </h2>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
+                <div className="education-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
                     {eduData.map((edu, index) => (
                         <div key={index} style={{
                             background: isDark ? 'linear-gradient(145deg, #141414, #1c1c1c)' : 'white',

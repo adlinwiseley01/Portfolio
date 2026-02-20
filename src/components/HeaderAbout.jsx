@@ -62,6 +62,7 @@ const SOCIAL_LINKS = [
 
 const HeaderAbout = ({ theme, toggleTheme }) => {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -74,7 +75,7 @@ const HeaderAbout = ({ theme, toggleTheme }) => {
   return (
     <>
       {/* Sticky Navbar */}
-      <nav style={{
+      <nav className={`navbar ${scrolled ? 'scrolled' : ''}`} style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000,
         padding: '1rem 2rem',
         background: scrolled
@@ -87,7 +88,7 @@ const HeaderAbout = ({ theme, toggleTheme }) => {
         transition: 'all 0.4s ease',
         display: 'flex', justifyContent: 'space-between', alignItems: 'center',
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', zIndex: 1002 }}>
           <div style={{
             width: '40px', height: '40px', borderRadius: '10px',
             background: 'linear-gradient(135deg, #007bff, #0056b3)',
@@ -99,7 +100,19 @@ const HeaderAbout = ({ theme, toggleTheme }) => {
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
-          <ul style={{ display: 'flex', listStyle: 'none', gap: '0.1rem', margin: 0, padding: 0 }}>
+
+          {/* Hamburger Menu Button */}
+          <button
+            className={`menu-toggle ${menuOpen ? 'open' : ''}`}
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle Navigation"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <ul className={`nav-links ${menuOpen ? 'open' : ''}`} style={{ display: 'flex', listStyle: 'none', gap: '0.1rem', margin: 0, padding: 0 }}>
             {['About', 'Education', 'Skills', 'Experience', 'Projects', 'Contact'].map(item => (
               <li key={item}>
                 <a href={`#${item.toLowerCase()}`} style={{
@@ -107,6 +120,7 @@ const HeaderAbout = ({ theme, toggleTheme }) => {
                   textDecoration: 'none', padding: '0.5rem 0.9rem', borderRadius: '8px',
                   fontSize: '0.88rem', fontWeight: '500', transition: 'all 0.2s ease', display: 'block',
                 }}
+                  onClick={() => setMenuOpen(false)}
                   onMouseEnter={e => { e.target.style.color = isDark ? 'white' : '#007bff'; e.target.style.background = isDark ? 'rgba(0,123,255,0.15)' : 'rgba(0,123,255,0.08)'; }}
                   onMouseLeave={e => { e.target.style.color = isDark ? 'rgba(255,255,255,0.75)' : 'rgba(0,0,0,0.65)'; e.target.style.background = 'transparent'; }}>
                   {item}
@@ -114,13 +128,14 @@ const HeaderAbout = ({ theme, toggleTheme }) => {
               </li>
             ))}
           </ul>
-          <button onClick={toggleTheme} title={isDark ? 'Switch to light mode' : 'Switch to dark mode'} style={{
+
+          <button className="theme-toggle-btn" onClick={toggleTheme} title={isDark ? 'Switch to light mode' : 'Switch to dark mode'} style={{
             marginLeft: '0.4rem', width: '40px', height: '40px', borderRadius: '10px',
             border: isDark ? '1px solid rgba(255,255,255,0.12)' : '1px solid rgba(0,0,0,0.1)',
             background: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.05)',
             color: isDark ? '#facc15' : '#6366f1',
             cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
-            transition: 'all 0.3s', flexShrink: 0,
+            transition: 'all 0.3s', flexShrink: 0, zIndex: 1002
           }}
             onMouseEnter={e => { e.currentTarget.style.background = isDark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.1)'; }}
             onMouseLeave={e => { e.currentTarget.style.background = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.05)'; }}>
@@ -144,14 +159,14 @@ const HeaderAbout = ({ theme, toggleTheme }) => {
         <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', backgroundImage: isDark ? 'linear-gradient(rgba(0,123,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,123,255,0.03) 1px, transparent 1px)' : 'linear-gradient(rgba(0,123,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,123,255,0.05) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
 
         {/* Two-column content */}
-        <div style={{
+        <div className="hero-container" style={{
           maxWidth: '1200px', margin: '0 auto', padding: '8rem 2rem 5rem',
           display: 'grid', gridTemplateColumns: '1fr auto',
           gap: '4rem', alignItems: 'center', minHeight: '100vh',
         }}>
           {/* LEFT — text */}
-          <div>
-            <h1 style={{
+          <div className="hero-content">
+            <h1 className="hero-title" style={{
               fontSize: 'clamp(2.2rem, 5vw, 4rem)', fontWeight: '800', lineHeight: 1.1,
               margin: '0 0 0.75rem', color: isDark ? 'white' : '#0f172a', letterSpacing: '-1px',
             }}>
@@ -189,7 +204,7 @@ const HeaderAbout = ({ theme, toggleTheme }) => {
             </div>
 
             {/* Stats */}
-            <div style={{ display: 'flex', gap: '2.5rem', marginTop: '3rem', paddingTop: '2.5rem', borderTop: isDark ? '1px solid rgba(255,255,255,0.08)' : '1px solid rgba(0,0,0,0.08)', flexWrap: 'wrap' }}>
+            <div className="hero-stats" style={{ display: 'flex', gap: '2.5rem', marginTop: '3rem', paddingTop: '2.5rem', borderTop: isDark ? '1px solid rgba(255,255,255,0.08)' : '1px solid rgba(0,0,0,0.08)', flexWrap: 'wrap' }}>
               {[{ value: '8+', label: 'Months Experience' }, { value: '5+', label: 'Projects Built' }, { value: '100%', label: 'Commitment' }].map(stat => (
                 <div key={stat.label}>
                   <div style={{ fontSize: '1.8rem', fontWeight: '800', color: '#007bff', lineHeight: 1 }}>{stat.value}</div>
@@ -200,7 +215,7 @@ const HeaderAbout = ({ theme, toggleTheme }) => {
           </div>
 
           {/* RIGHT — Profile card */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem', flexShrink: 0 }}>
+          <div className="hero-image" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem', flexShrink: 0 }}>
             <div style={{
               width: '280px',
               background: isDark ? 'rgba(255,255,255,0.04)' : 'rgba(255,255,255,0.75)',

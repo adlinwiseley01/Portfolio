@@ -84,7 +84,7 @@ const Skills = ({ theme }) => {
                     </h2>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.25rem' }}>
+                <div className="skills-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.25rem' }}>
                     {skillsData.map((skill, index) => (
                         <div key={index} style={{
                             background: isDark ? 'linear-gradient(145deg, #141414, #1c1c1c)' : 'white',

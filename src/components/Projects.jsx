@@ -19,7 +19,7 @@ const Projects = ({ theme }) => {
                     </h2>
                 </div>
 
-                <div style={{ maxWidth: '700px', margin: '0 auto' }}>
+                <div className="projects-grid" style={{ maxWidth: '700px', margin: '0 auto' }}>
                     <div style={{
                         background: isDark ? 'linear-gradient(145deg, #0e1a30, #141d2e)' : 'white',
                         borderRadius: '24px',
@@ -69,7 +69,7 @@ const Projects = ({ theme }) => {
                             A comprehensive secure Authentication System with complete UI for login flows, role-based access control, and Multi-Factor Authentication (MFA) with OTP and email verification. Includes full API integration and robust validation handling.
                         </p>
 
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.7rem', marginBottom: '2rem' }}>
+                        <div className="project-features-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.7rem', marginBottom: '2rem' }}>
                             {[
                                 { icon: '🔑', label: 'Role-Based Access' },
                                 { icon: '📧', label: 'Email Verification' },
