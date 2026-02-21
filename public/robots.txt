@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://adlinwiseley01.github.io/sitemap.xml
+
+Sitemap: https://adlinwiseley.online/sitemap.xml

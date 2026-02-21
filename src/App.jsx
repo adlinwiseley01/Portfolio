@@ -30,12 +30,14 @@ function App() {
       minHeight: '100vh',
       transition: 'background 0.3s, color 0.3s',
     }}>
-      <HeaderAbout theme={theme} toggleTheme={toggleTheme} />
-      <Education theme={theme} />
-      <Skills theme={theme} />
-      <Experience theme={theme} />
-      <Projects theme={theme} />
-      <Contact theme={theme} />
+      <main>
+        <HeaderAbout theme={theme} toggleTheme={toggleTheme} />
+        <Education theme={theme} />
+        <Skills theme={theme} />
+        <Experience theme={theme} />
+        <Projects theme={theme} />
+        <Contact theme={theme} />
+      </main>
 
       <footer style={{
         padding: '2.5rem 2rem',
@@ -51,9 +53,9 @@ function App() {
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             fontWeight: '800', fontSize: '0.65rem', color: 'white',
           }}>AW</div>
-          <span style={{ fontWeight: '700', color: isDark ? 'rgba(255,255,255,0.8)' : 'rgba(15,23,42,0.8)' }}>Adlin Wiseley</span>
+          <span style={{ fontWeight: '700', color: isDark ? 'rgba(255,255,255,0.85)' : 'rgba(15,23,42,0.85)' }}>Adlin Wiseley</span>
         </div>
-        <p style={{ color: isDark ? 'rgba(255,255,255,0.3)' : 'rgba(15,23,42,0.4)', fontSize: '0.82rem' }}>
+        <p style={{ color: isDark ? 'rgba(255,255,255,0.6)' : 'rgba(15,23,42,0.6)', fontSize: '0.82rem' }}>
           © {new Date().getFullYear()} Adlin Wiseley. All rights reserved.
         </p>
       </footer>

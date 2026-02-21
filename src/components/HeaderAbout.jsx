@@ -47,10 +47,10 @@ const MailIcon = () => (
 );
 
 const BriefcaseIcon = () => (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
-        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-    </svg>
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+  </svg>
 );
 
 const SOCIAL_LINKS = [
@@ -129,14 +129,18 @@ const HeaderAbout = ({ theme, toggleTheme }) => {
             ))}
           </ul>
 
-          <button className="theme-toggle-btn" onClick={toggleTheme} title={isDark ? 'Switch to light mode' : 'Switch to dark mode'} style={{
-            marginLeft: '0.4rem', width: '40px', height: '40px', borderRadius: '10px',
-            border: isDark ? '1px solid rgba(255,255,255,0.12)' : '1px solid rgba(0,0,0,0.1)',
-            background: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.05)',
-            color: isDark ? '#facc15' : '#6366f1',
-            cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
-            transition: 'all 0.3s', flexShrink: 0, zIndex: 1002
-          }}
+          <button className="theme-toggle-btn"
+            onClick={toggleTheme}
+            title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+            aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+            style={{
+              marginLeft: '0.4rem', width: '40px', height: '40px', borderRadius: '10px',
+              border: isDark ? '1px solid rgba(255,255,255,0.12)' : '1px solid rgba(0,0,0,0.1)',
+              background: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.05)',
+              color: isDark ? '#facc15' : '#6366f1',
+              cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
+              transition: 'all 0.3s', flexShrink: 0, zIndex: 1002
+            }}
             onMouseEnter={e => { e.currentTarget.style.background = isDark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.1)'; }}
             onMouseLeave={e => { e.currentTarget.style.background = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.05)'; }}>
             {isDark ? <SunIcon /> : <MoonIcon />}
@@ -265,6 +269,7 @@ const HeaderAbout = ({ theme, toggleTheme }) => {
               <div style={{ display: 'flex', gap: '0.75rem' }}>
                 {SOCIAL_LINKS.map(({ Icon, href, label }) => (
                   <a key={label} href={href} title={label}
+                    aria-label={`Visit my ${label}`}
                     target={href.startsWith('http') ? '_blank' : undefined}
                     rel="noopener noreferrer"
                     style={{
@@ -284,7 +289,7 @@ const HeaderAbout = ({ theme, toggleTheme }) => {
             </div>
           </div>
         </div>
-      </div>
+      </div >
     </>
   );
 };
