@@ -89,18 +89,33 @@ const Contact = ({ theme }) => {
                 </div>
 
                 {/* Contact info cards */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '2.5rem' }}>
-                    {contactInfo.map(({ Icon, label, value, href }) => {
+                <div style={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    gap: '1.5rem',
+                    marginBottom: '2.5rem',
+                    justifyContent: 'center'
+                }}>
+                    {contactInfo.map(({ Icon, label, value, href }, index) => {
+                        const isSocial = label === 'LinkedIn' || label === 'GitHub';
                         const cardStyle = {
-                            display: 'flex', alignItems: 'center', gap: '1.25rem',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            gap: '0.75rem',
                             background: isDark ? 'linear-gradient(145deg, #141414, #1c1c1c)' : 'white',
                             borderRadius: '16px',
                             border: isDark ? '1px solid rgba(255,255,255,0.06)' : '1px solid rgba(0,0,0,0.07)',
                             boxShadow: isDark ? 'none' : '0 2px 15px rgba(0,0,0,0.05)',
-                            padding: '1.1rem 1.4rem',
-                            transition: 'transform 0.25s, border-color 0.25s',
+                            padding: '1.5rem',
+                            transition: 'all 0.3s ease',
                             textDecoration: 'none',
                             cursor: href ? 'pointer' : 'default',
+                            flex: isSocial ? '0 1 300px' : '1 1 240px',
+                            minWidth: '240px',
+                            textAlign: 'center',
+                            position: 'relative',
+                            overflow: 'hidden'
                         };
                         const CardTag = href ? 'a' : 'div';
                         const cardProps = href
@@ -109,33 +124,54 @@ const Contact = ({ theme }) => {
 
                         return (
                             <CardTag key={label} {...cardProps} style={cardStyle}
-                                onMouseEnter={e => { e.currentTarget.style.transform = 'translateX(6px)'; e.currentTarget.style.borderColor = 'rgba(0,123,255,0.4)'; }}
-                                onMouseLeave={e => { e.currentTarget.style.transform = 'translateX(0)'; e.currentTarget.style.borderColor = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.07)'; }}>
+                                onMouseEnter={e => {
+                                    e.currentTarget.style.transform = 'translateY(-5px)';
+                                    e.currentTarget.style.borderColor = 'rgba(0,123,255,0.4)';
+                                    e.currentTarget.style.boxShadow = isDark ? '0 10px 30px rgba(0,123,255,0.1)' : '0 10px 30px rgba(0,0,0,0.1)';
+                                }}
+                                onMouseLeave={e => {
+                                    e.currentTarget.style.transform = 'translateY(0)';
+                                    e.currentTarget.style.borderColor = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.07)';
+                                    e.currentTarget.style.boxShadow = isDark ? 'none' : '0 2px 15px rgba(0,0,0,0.05)';
+                                }}>
                                 {/* Icon box */}
                                 <div style={{
-                                    width: '46px', height: '46px', borderRadius: '12px', flexShrink: 0,
+                                    width: '50px', height: '50px', borderRadius: '12px',
                                     background: 'rgba(0,123,255,0.1)', border: '1px solid rgba(0,123,255,0.25)',
                                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                                     color: '#007bff',
+                                    marginBottom: '0.5rem'
                                 }}>
                                     <Icon />
                                 </div>
 
                                 {/* Label + value */}
-                                <div style={{ flex: 1 }}>
-                                    <div style={{ fontSize: '0.73rem', fontWeight: '700', color: isDark ? 'rgba(255,255,255,0.38)' : 'rgba(15,23,42,0.42)', textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: '0.2rem' }}>
+                                <div style={{ width: '100%' }}>
+                                    <div style={{ fontSize: '0.73rem', fontWeight: '700', color: isDark ? 'rgba(255,255,255,0.38)' : 'rgba(15,23,42,0.42)', textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: '0.3rem' }}>
                                         {label}
                                     </div>
-                                    <span style={{ color: isDark ? 'rgba(255,255,255,0.88)' : '#0f172a', fontSize: '0.95rem', fontWeight: '600' }}>
+                                    <div style={{
+                                        color: isDark ? 'rgba(255,255,255,0.88)' : '#0f172a',
+                                        fontSize: '0.95rem',
+                                        fontWeight: '600',
+                                        wordBreak: 'break-all'
+                                    }}>
                                         {value}
-                                    </span>
+                                    </div>
                                 </div>
 
-                                {/* Arrow for clickable cards */}
+                                {/* Social Badge or Link Arrow */}
                                 {href && (
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(0,123,255,0.6)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
-                                        <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
-                                    </svg>
+                                    <div style={{
+                                        position: 'absolute',
+                                        top: '12px',
+                                        right: '12px',
+                                        opacity: '0.6'
+                                    }}>
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#007bff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                            <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
+                                        </svg>
+                                    </div>
                                 )}
                             </CardTag>
                         );

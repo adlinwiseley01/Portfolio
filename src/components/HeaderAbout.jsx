@@ -46,18 +46,18 @@ const MailIcon = () => (
   </svg>
 );
 
-const CodeBracketIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <polyline points="16 18 22 12 16 6" />
-    <polyline points="8 6 2 12 8 18" />
-  </svg>
+const BriefcaseIcon = () => (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+    </svg>
 );
 
 const SOCIAL_LINKS = [
   { Icon: GithubIcon, href: 'https://github.com/adlinwiseley01', label: 'GitHub' },
   { Icon: LinkedInIcon, href: 'https://in.linkedin.com/in/adlin-wiseley-i-b269a0252', label: 'LinkedIn' },
   { Icon: MailIcon, href: 'mailto:adlinwiseley1@gmail.com', label: 'Email' },
-  { Icon: CodeBracketIcon, href: '#projects', label: 'Code' },
+  { Icon: BriefcaseIcon, href: '#projects', label: 'Current Work' },
 ];
 
 const HeaderAbout = ({ theme, toggleTheme }) => {
