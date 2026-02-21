@@ -45,7 +45,7 @@ const Projects = ({ theme }) => {
                         color: '#3b82f6', padding: '0.35rem 1rem', borderRadius: '50px',
                         fontSize: '0.85rem', fontWeight: '600', letterSpacing: '1px',
                         textTransform: 'uppercase', display: 'inline-block', marginBottom: '1rem'
-                    }}>Portfolio</span>
+                    }}>Featured Project</span>
                     <h2 style={{ fontSize: '2.5rem', fontWeight: '800', color: isDark ? 'white' : '#0f172a', letterSpacing: '-0.5px', margin: 0 }}>
                         Current Work
                     </h2>

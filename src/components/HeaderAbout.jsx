@@ -136,7 +136,7 @@ const HeaderAbout = ({ theme, toggleTheme }) => {
             title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
             aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
             style={{
-              marginLeft: '0.4rem', width: '40px', height: '40px', borderRadius: '10px',
+              marginLeft: '0.4rem', width: '48px', height: '48px', borderRadius: '12px',
               border: isDark ? '1px solid rgba(255,255,255,0.12)' : '1px solid rgba(0,0,0,0.1)',
               background: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.05)',
               color: isDark ? '#facc15' : '#6366f1',
