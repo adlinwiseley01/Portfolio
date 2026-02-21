@@ -117,7 +117,7 @@ const HeaderAbout = ({ theme, toggleTheme }) => {
               <li key={item}>
                 <a href={`#${item.toLowerCase()}`} style={{
                   color: isDark ? 'rgba(255,255,255,0.75)' : 'rgba(0,0,0,0.65)',
-                  textDecoration: 'none', padding: '0.5rem 0.9rem', borderRadius: '8px',
+                  textDecoration: 'none', padding: '0.8rem 1.2rem', borderRadius: '8px',
                   fontSize: '0.88rem', fontWeight: '500', transition: 'all 0.2s ease', display: 'block',
                 }}
                   onClick={() => setMenuOpen(false)}
@@ -273,7 +273,7 @@ const HeaderAbout = ({ theme, toggleTheme }) => {
                     target={href.startsWith('http') ? '_blank' : undefined}
                     rel="noopener noreferrer"
                     style={{
-                      width: '38px', height: '38px', borderRadius: '10px',
+                      width: '48px', height: '48px', borderRadius: '12px',
                       background: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,123,255,0.06)',
                       border: isDark ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(0,123,255,0.15)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
