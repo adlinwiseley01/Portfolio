@@ -285,6 +285,7 @@ const HeaderAbout = ({ theme, toggleTheme }) => {
                     onMouseEnter={e => { e.currentTarget.style.background = 'rgba(0,123,255,0.15)'; e.currentTarget.style.color = '#007bff'; e.currentTarget.style.borderColor = 'rgba(0,123,255,0.4)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
                     onMouseLeave={e => { e.currentTarget.style.background = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,123,255,0.06)'; e.currentTarget.style.color = isDark ? 'rgba(255,255,255,0.7)' : '#007bff'; e.currentTarget.style.borderColor = isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,123,255,0.15)'; e.currentTarget.style.transform = 'translateY(0)'; }}>
                     <Icon />
+                    <span className="sr-only">{label}</span>
                   </a>
                 ))}
               </div>

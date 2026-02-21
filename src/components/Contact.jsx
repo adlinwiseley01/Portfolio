@@ -139,6 +139,7 @@ const Contact = ({ theme }) => {
                                     e.currentTarget.style.borderColor = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.07)';
                                     e.currentTarget.style.boxShadow = isDark ? 'none' : '0 2px 15px rgba(0,0,0,0.05)';
                                 }}>
+                                <span className="sr-only">{label}</span>
                                 {/* Icon box */}
                                 <div style={{
                                     width: '50px', height: '50px', borderRadius: '12px',
