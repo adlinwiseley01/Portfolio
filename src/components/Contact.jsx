@@ -50,7 +50,7 @@ const contactInfo = [
         Icon: LocationIcon,
         label: 'Location',
         value: 'Thoothukudi, Tamil Nadu',
-        href: null,
+        href: 'https://www.google.com/maps/search/Thoothukudi,+Tamil+Nadu,+India',
     },
     {
         Icon: LinkedInIcon,
