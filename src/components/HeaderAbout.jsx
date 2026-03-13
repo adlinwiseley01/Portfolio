@@ -55,22 +55,55 @@ const BriefcaseIcon = () => (
   </svg>
 );
 
+const ShareIcon = ({ size = 20 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
+    <polyline points="16 6 12 2 8 6" />
+    <line x1="12" y1="2" x2="12" y2="15" />
+  </svg>
+);
+
 const SOCIAL_LINKS = [
   { Icon: GithubIcon, href: 'https://github.com/adlinwiseley01', label: 'GitHub' },
   { Icon: LinkedInIcon, href: 'https://in.linkedin.com/in/adlin-wiseley-i-b269a0252', label: 'LinkedIn' },
   { Icon: MailIcon, href: 'mailto:adlinwiseley1@gmail.com', label: 'Email' },
-  { Icon: BriefcaseIcon, href: '#projects', label: 'Current Work' },
 ];
 
 const HeaderAbout = ({ theme, toggleTheme }) => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [shareStatus, setShareStatus] = useState(null); // 'copied' or null
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleShare = async () => {
+    const shareData = {
+      title: 'Adlin Wiseley | Portfolio',
+      text: 'Check out Adlin Wiseley\'s professional portfolio - Junior Software Developer.',
+      url: window.location.href,
+    };
+
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+      } catch (err) {
+        console.error('Share failed:', err);
+      }
+    } else {
+      // Fallback to clipboard
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        setShareStatus('copied');
+        setTimeout(() => setShareStatus(null), 2000);
+      } catch (err) {
+        console.error('Failed to copy:', err);
+      }
+    }
+  };
 
   const isDark = theme === 'dark';
 
@@ -251,20 +284,7 @@ const HeaderAbout = ({ theme, toggleTheme }) => {
                 <span>Thoothukudi, India</span>
               </div>
 
-              <div style={{ width: '100%', height: '1px', background: isDark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.07)', marginBottom: '1.5rem' }} />
-
-              {/* Info rows */}
-              {[
-                { label: 'Experience', value: '8 Months' },
-                { label: 'Company', value: 'Skillmine Tech' },
-              ].map(row => (
-                <div key={row.label} style={{ display: 'flex', justifyContent: 'space-between', width: '100%', marginBottom: '0.75rem' }}>
-                  <span style={{ fontSize: '0.8rem', color: isDark ? 'rgba(255,255,255,0.4)' : 'rgba(15,23,42,0.45)', fontWeight: '500' }}>{row.label}</span>
-                  <span style={{ fontSize: '0.8rem', color: isDark ? 'rgba(255,255,255,0.85)' : '#0f172a', fontWeight: '600' }}>{row.value}</span>
-                </div>
-              ))}
-
-              <div style={{ width: '100%', height: '1px', background: isDark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.07)', margin: '0.5rem 0 1.25rem' }} />
+              <div style={{ width: '100%', height: '1px', background: isDark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.07)', margin: '1rem 0 1.25rem' }} />
 
               {/* Social icon buttons */}
               <div style={{ display: 'flex', gap: '0.75rem' }}>
@@ -287,6 +307,34 @@ const HeaderAbout = ({ theme, toggleTheme }) => {
                     <span className="sr-only">{label}</span>
                   </a>
                 ))}
+
+                {/* Native Share Button Integrated into Social Row */}
+                <button
+                  onClick={handleShare}
+                  title="Share Portfolio"
+                  aria-label="Share Portfolio"
+                  style={{
+                    width: '48px', height: '48px', borderRadius: '12px',
+                    background: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,123,255,0.06)',
+                    border: isDark ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(0,123,255,0.15)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    color: isDark ? 'rgba(255,255,255,0.7)' : '#007bff',
+                    cursor: 'pointer', transition: 'all 0.25s',
+                    position: 'relative'
+                  }}
+                  onMouseEnter={e => { e.currentTarget.style.background = 'rgba(0,123,255,0.15)'; e.currentTarget.style.color = '#007bff'; e.currentTarget.style.borderColor = 'rgba(0,123,255,0.4)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
+                  onMouseLeave={e => { e.currentTarget.style.background = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,123,255,0.06)'; e.currentTarget.style.color = isDark ? 'rgba(255,255,255,0.7)' : '#007bff'; e.currentTarget.style.borderColor = isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,123,255,0.15)'; e.currentTarget.style.transform = 'translateY(0)'; }}>
+                  <ShareIcon size={20} />
+                  {shareStatus === 'copied' && (
+                    <span style={{
+                      position: 'absolute', top: '-40px', left: '50%', transform: 'translateX(-50%)',
+                      background: '#007bff', color: 'white', padding: '0.4rem 0.8rem', borderRadius: '8px',
+                      fontSize: '0.75rem', fontWeight: 'bold', whiteSpace: 'nowrap',
+                      boxShadow: '0 4px 15px rgba(0,123,255,0.3)',
+                      animation: 'fadeInOut 2s forwards'
+                    }}>Copied!</span>
+                  )}
+                </button>
               </div>
             </div>
           </div>
