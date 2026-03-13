@@ -183,7 +183,7 @@ const HeaderAbout = ({ theme, toggleTheme }) => {
             </h1>
 
             <h2 style={{ fontSize: 'clamp(0.95rem, 1.8vw, 1.35rem)', fontWeight: '500', color: isDark ? 'rgba(255,255,255,0.55)' : 'rgba(15,23,42,0.55)', margin: '0 0 0.75rem' }}>
-              Junior Software Developer &amp; UI Specialist
+              Junior Software Developer
             </h2>
 
             {/* Location */}
@@ -257,7 +257,6 @@ const HeaderAbout = ({ theme, toggleTheme }) => {
               {[
                 { label: 'Experience', value: '8 Months' },
                 { label: 'Company', value: 'Skillmine Tech' },
-                { label: 'Focus', value: 'UI Development' },
               ].map(row => (
                 <div key={row.label} style={{ display: 'flex', justifyContent: 'space-between', width: '100%', marginBottom: '0.75rem' }}>
                   <span style={{ fontSize: '0.8rem', color: isDark ? 'rgba(255,255,255,0.4)' : 'rgba(15,23,42,0.45)', fontWeight: '500' }}>{row.label}</span>
